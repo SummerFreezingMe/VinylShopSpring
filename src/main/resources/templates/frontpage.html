@@ -1,0 +1,23 @@
+<html lang="ru">
+<head>
+    <title>Soundemic</title>
+<body class="page">
+<link rel="stylesheet" th:href="@{/stylesheets/style.css}" />
+<link rel="icon" type="image/x-icon" th:href="@{/image.ico}">
+<div id="header"><h1> Welcome to Soundemic!</h1>
+    <ul id="navbar">
+        <li><a href="mainpage" target=_self>Mainpage</a></li>
+        <li><a href="info" > About us</a></li>
+        <li><a href="catalog"> Catalog </a></li>
+    </ul></div>
+<div>
+    <p>123</p>
+
+
+<tr th:each="user: ${users}">
+    <td th:text="${user.id}"></td>
+    <td th:text="${user.name}"></td>
+</tr>
+</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+body{
+ //   background-image: url(bckr.jpg);
+}
+a {
+    text-decoration: none;
+    margin-right: 6px;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+img{
+    box-shadow: 0 0 5px;
+}
+img:hover {
+    webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+p{
+    font-weight: bold;
+    text-decoration: blink;
+    line-height: 24px;
+    color:black;
+}
+p2{
+    -webkit-column-width: 200px;
+    -moz-column-width: 200px;
+    column-width: 200px;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    -webkit-column-gap: 30px;
+    -moz-column-gap: 30px;
+    column-gap: 30px;
+    -webkit-column-rule: 1px solid #ccc;
+    -moz-column-rule: 1px solid #ccc;
+    column-rule: 1px solid #ccc;
+}
+
+#header{
+    background: linear-gradient(to right, #274472, #75E6DA);
+
+    border-style:outset;
+    border-color:#274472 #75E6DA;
+}
+#navbar ul{
+    display: flex;
+
+    background-color: #75E6DA;
+    position: absolute;
+    top: 100%;
+    font-color:#67595E;
+    font-size:12pt;
+}
+#navbar li:hover ul {
+    display: block;
+}
+#navbar, #navbar ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+#navbar {
+    height: 40px;
+    background: linear-gradient(to right, #274472, #75E6DA);
+    min-width: 400px;
+    border-top:6px solid #000;
+    border-color:#274472 #75E6DA;
+}
+#navbar li {
+    width:33%;
+    float: left;
+    position: relative;
+    height: 100%;
+
+}
+#navbar li a {
+    display: block;
+    padding: 6px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+}
+#navbar ul li { float: none; }
+#navbar li:hover { background-color: #122620; }
+#navbar ul li:hover { background-color: #666; }
+#search {
+    color: #274472;
+}
+
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    text-align:center; /*For IE6 Shenanigans*/
+}
+
+
+#wrapper{
+    width:560px;
+    margin:0 auto;
+    text-align:left;
+}
