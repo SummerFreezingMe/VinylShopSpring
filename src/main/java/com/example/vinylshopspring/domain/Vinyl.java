@@ -1,5 +1,6 @@
 package com.example.vinylshopspring.domain;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -11,10 +12,14 @@ public class Vinyl {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer vinyl_id;
-    private String vinyl_name;
+    @Getter
+    private String vinylName;
+    @Getter
     private String description;
+    @Getter
     private int price;
     private int yearPublished;
+    @Getter
     private String genre;
     private int label;
 
