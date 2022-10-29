@@ -11,7 +11,8 @@ import javax.persistence.*;
 public class Vinyl {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer vinyl_id;
+    @Getter
+    private Long vinyl_id;
     @Getter
     private String vinylName;
     @Getter

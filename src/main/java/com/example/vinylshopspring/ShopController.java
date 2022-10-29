@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -57,8 +58,10 @@ public class ShopController {
         return "shop";
     }
 
-    @GetMapping("/shop-single")
-    public String shopSingle(Map<String, Object> model) {
+    @GetMapping("/shop-single/{id}")
+    public String shopSingle(Map<String, Object> model, @PathVariable("id") Long id) {
+        Optional<Vinyl> vinyl = vinylRepository.findById(id);
+        model.put("vinyl",vinyl.get());
         return "shop-single";
     }
 /*  @GetMapping("/shop/add")
