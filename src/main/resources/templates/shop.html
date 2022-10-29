@@ -88,7 +88,7 @@
                    data-bs-target="#templatemo_search">
                     <i class="fa fa-fw fa-search text-dark mr-2"></i>
                 </a>
-                <a class="nav-icon position-relative text-decoration-none" href="#">
+                <a class="nav-icon position-relative text-decoration-none" href="cart">
                     <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span>
                 </a>
@@ -169,7 +169,7 @@
                 <div class="col-md-6 pb-4">
                     <div class="d-flex">
                         <select class="form-control">
-                            <option > Featured</option>
+                            <option> Featured</option>
                             <option href="az">A to Z</option>
                             <option>Item</option>
                         </select>
@@ -177,7 +177,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="shop">
                     <tr th:each="vinyl: ${vinyls}">
                         <td>
                             <div class="col-md-4">
@@ -223,7 +222,6 @@
                             </div>
                         </td>
                     </tr>
-                </div>
                 <div class="col-md-4">
                     <div class="card mb-4 product-wap rounded-0">
                         <div class="card rounded-0">
@@ -463,6 +461,7 @@
                     </div>
                 </div>
             </footer>
+        </div>
 </body>
 
 </html>

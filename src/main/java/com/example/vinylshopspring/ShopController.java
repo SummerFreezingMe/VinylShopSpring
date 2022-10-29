@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 public class ShopController {
@@ -55,6 +56,17 @@ public class ShopController {
         model.put("vinyls", vinyls);
         return "shop";
     }
+
+    @GetMapping("/shop-single")
+    public String shopSingle(Map<String, Object> model) {
+        return "shop-single";
+    }
+/*  @GetMapping("/shop/add")
+    public String addToCart(Map<String, Object> model){
+       // Optional<Vinyl> chosen = vinylRepository.findByVinylsId(4);
+     //  model.put("toCart",chosen);
+        return "redirect:/cart";
+    }*/
 
     public PaginatedBookResponse readBooks(Pageable pageable) {
         Page<Vinyl> vinyls = vinylRepository.findAll(pageable);

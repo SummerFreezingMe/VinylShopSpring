@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 
 import java.util.Collection;
+import java.util.Random;
 import java.util.Set;
 
 @Entity
@@ -17,7 +18,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
+    private String username;
 
     private String email;
     private boolean active;
@@ -28,9 +29,9 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
 
-    public User(Long id, String name, String email) {
+    public User(Long id, String username, String email) {
         this.id = id;
-        this.name = name;
+        this.username = username;
         this.email = email;
     }
 
@@ -42,12 +43,12 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     public String getEmail() {
@@ -99,5 +100,11 @@ public class User implements UserDetails {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Object ordersAmount() {
+        Random r = new Random();
+        // todo: fetching actual amount of orders from database
+        return r.nextInt(5);
     }
 }
