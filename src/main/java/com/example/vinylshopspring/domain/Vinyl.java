@@ -22,6 +22,6 @@ public class Vinyl {
     private int yearPublished;
     @Getter
     private String genre;
-    private int label;
+    private String label;
 
 }
