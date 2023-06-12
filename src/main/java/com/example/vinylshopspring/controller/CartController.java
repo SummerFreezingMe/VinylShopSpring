@@ -1,8 +1,6 @@
 package com.example.vinylshopspring.controller;
 
-import com.example.vinylshopspring.domain.models.Vinyl;
-import com.example.vinylshopspring.repos.VinylRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.vinylshopspring.service.impl.CartServiceImpl;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -15,9 +13,11 @@ import java.util.*;
 
 @Controller
 public class CartController {
-    @Autowired
-    private VinylRepository vinylRepository;
-    private List<Vinyl> vinylsCart;
+    private final CartServiceImpl cartService;
+
+    public CartController(CartServiceImpl cartService) {
+        this.cartService = cartService;
+    }
 
     @GetMapping("/cart/{id}")
     public String cartController(Map<String, Object> model, @PathVariable("id") Long id) {
@@ -27,7 +27,7 @@ public class CartController {
 
     @GetMapping("/cart")
     public String cartController(Map<String, Object> model) {
-        model.put("vinyl", vinylsCart);
+        model.put("vinyl",cartService.getCart());
         return "cart";
     }
 
@@ -38,9 +38,7 @@ public class CartController {
 
     @GetMapping("/delete/{id}")
     public String deleteItem(Map<String, Object> model, @PathVariable("id") Long id) {
-        vinylsCart.removeIf(v -> Objects.equals(v.getVinyl_id(), id));
-
-        model.put("vinyl", vinylsCart);
+        model.put("vinyl", cartService.deleteItem(id));
         return "redirect:/cart";
     }
 
@@ -50,15 +48,11 @@ public class CartController {
         User principal = (User) auth.getPrincipal();
         String username = principal.getUsername();
         model.put("userName", username);
+        //todo: extract this method too
         return "congratulation";
     }
     private String addItem(Map<String, Object> model, @PathVariable("id") Long id) {
-        if (vinylsCart == null) {
-            vinylsCart = new ArrayList<>();
-        }
-        Optional<Vinyl> vinyl = vinylRepository.findById(id);
-        vinylsCart.add(vinyl.orElse(null));
-        model.put("vinyl", vinylsCart);
+        model.put("vinyl", cartService.addItem(id));
         return "redirect:/cart";
     }
 
