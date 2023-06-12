@@ -1,27 +1,33 @@
-package com.example.vinylshopspring.domain;
+package com.example.vinylshopspring.domain.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="vinyls")
 @NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Vinyl {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
     private Long vinyl_id;
-    @Getter
+
     private String vinylName;
-    @Getter
+
     private String description;
-    @Getter
+
     private int price;
+
     private int yearPublished;
-    @Getter
+
     private String genre;
+
     private String label;
 
 }

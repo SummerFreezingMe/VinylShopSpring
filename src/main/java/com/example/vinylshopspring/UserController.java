@@ -20,7 +20,7 @@ public class UserController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User principal = (User) auth.getPrincipal();
         String username = principal.getUsername();
-        com.example.vinylshopspring.domain.User user = ur.findByUsername(username);
+        com.example.vinylshopspring.domain.models.User user = ur.findByUsername(username);
         model.put("userName", username);
         model.put("orderCount", user.ordersAmount());
         return "user";
