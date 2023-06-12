@@ -29,19 +29,4 @@ public class Order {
 
     private Date placedAt;
 
-
-    @Transient
-    public Double getTotalOrderPrice() {
-        double sum = 0D;
-        List<Integer> orderProducts = getVinylsId();
-        for (Integer id :orderProducts) {
-            //todo : we either store IDs or vinyls
-        }
-        return sum;
-    }
-
-    @Transient
-    public int getNumberOfProducts() {
-        return this.vinylsId.size();
-    }
 }

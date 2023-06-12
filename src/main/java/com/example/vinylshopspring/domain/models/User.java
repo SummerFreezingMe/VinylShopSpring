@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Random;
 import java.util.Set;
 
 @Entity
@@ -36,10 +35,5 @@ public class User {
         this.id = id;
         this.username = username;
         this.email = email;
-    }
-    public Object ordersAmount() {
-        Random r = new Random();
-        // todo: fetching actual amount of orders from database
-        return r.nextInt(5);
     }
 }
