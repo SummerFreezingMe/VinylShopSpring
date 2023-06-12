@@ -1,4 +1,4 @@
-package com.example.vinylshopspring;
+package com.example.vinylshopspring.controller;
 
 import com.example.vinylshopspring.domain.models.Vinyl;
 import com.example.vinylshopspring.repos.VinylRepository;

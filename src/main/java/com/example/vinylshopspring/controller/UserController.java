@@ -1,4 +1,4 @@
-package com.example.vinylshopspring;
+package com.example.vinylshopspring.controller;
 
 import com.example.vinylshopspring.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
