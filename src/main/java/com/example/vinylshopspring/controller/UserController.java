@@ -1,10 +1,7 @@
 package com.example.vinylshopspring.controller;
 
-import com.example.vinylshopspring.repos.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
+import com.example.vinylshopspring.domain.models.User;
+import com.example.vinylshopspring.service.impl.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -12,17 +9,18 @@ import java.util.Map;
 
 @Controller
 public class UserController {
-    @Autowired
-    private UserRepository ur;
+
+    private final UserServiceImpl userService;
+
+    public UserController(UserServiceImpl userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/user")
     public String infoController(Map<String, Object> model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User principal = (User) auth.getPrincipal();
-        String username = principal.getUsername();
-        com.example.vinylshopspring.domain.models.User user = ur.findByUsername(username);
-        model.put("userName", username);
-        model.put("orderCount", user.ordersAmount());
+        User user = userService.getCurrentUser();
+        model.put("userName", user);
+        model.put("orderCount", userService.ordersAmount(user));
         return "user";
     }
 

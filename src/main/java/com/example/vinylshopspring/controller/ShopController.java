@@ -1,7 +1,5 @@
 package com.example.vinylshopspring.controller;
 
-import com.example.vinylshopspring.domain.models.Vinyl;
-import com.example.vinylshopspring.repos.VinylRepository;
 import com.example.vinylshopspring.service.impl.VinylServiceImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -10,46 +8,30 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
-import java.util.Optional;
 
 @Controller
 public class ShopController {
     private final VinylServiceImpl vinylService;
-    private final VinylRepository vinylRepository;
 
-    public ShopController(VinylServiceImpl vinylService, VinylRepository vinylRepository) {
+    public ShopController(VinylServiceImpl vinylService) {
         this.vinylService = vinylService;
-        this.vinylRepository = vinylRepository;
     }
 
     @GetMapping("/shop")
     public String shopController(@RequestParam(name = "genre", required = false, defaultValue = "all") String genre, Map<String, Object> model) {
-        Iterable<Vinyl> vinyls;
-        if (genre.equals("all")) {
-            vinyls = vinylRepository.findAll();
-        } else vinyls = vinylRepository.findByGenre(genre);
-        model.put("vinyls", vinyls);
+        model.put("vinyls", vinylService.findByGenre(genre));
         return "shop";
     }
 
     @GetMapping("/shop/az")
     public String filterAToZ(Map<String, Object> model, Pageable pageable) {
-        Iterable<Vinyl> vinyls = vinylRepository.findAllByOrderByVinylNameAsc(pageable);
-        model.put("vinyls", vinyls);
-        return "shop";
-    }
-
-
-    @GetMapping("/shop/{genre}")
-    public String filterGenre(Map<String, Object> model,@PathVariable String genre) {
-        model.put("vinyls", vinylService.findByGenre(genre));
+        model.put("vinyls", vinylService.findAllByOrderByVinylNameAsc(pageable));
         return "shop";
     }
 
     @GetMapping("/shop-single/{id}")
     public String shopSingle(Map<String, Object> model, @PathVariable("id") Long id) {
-        Optional<Vinyl> vinyl = vinylRepository.findById(id);
-        model.put("vinyl",vinyl.get());
+        model.put("vinyl",vinylService.findById(id));
         return "shop-single";
     }
 /*  @GetMapping("/shop/add")
