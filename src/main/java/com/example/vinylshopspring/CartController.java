@@ -1,7 +1,6 @@
 package com.example.vinylshopspring;
 
-import com.example.vinylshopspring.domain.Vinyl;
-import com.example.vinylshopspring.repos.UserRepository;
+import com.example.vinylshopspring.domain.models.Vinyl;
 import com.example.vinylshopspring.repos.VinylRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

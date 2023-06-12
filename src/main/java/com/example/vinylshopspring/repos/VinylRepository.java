@@ -1,12 +1,9 @@
 package com.example.vinylshopspring.repos;
 
-import com.example.vinylshopspring.domain.Vinyl;
+import com.example.vinylshopspring.domain.models.Vinyl;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
-
-import java.util.Optional;
 
 public interface VinylRepository extends JpaRepository<Vinyl,Long> {
     Page<Vinyl> findAllByOrderByVinylNameAsc(Pageable pageable);
