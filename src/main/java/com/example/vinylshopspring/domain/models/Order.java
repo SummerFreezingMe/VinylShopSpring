@@ -1,7 +1,9 @@
-package com.example.vinylshopspring.domain;
+package com.example.vinylshopspring.domain.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,6 +12,9 @@ import java.util.List;
 @Entity
 @Table(name="orders")
 @NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Order {
 
     @Id
